@@ -6,6 +6,13 @@ class Cart < ApplicationRecord
 
   before_save :calculate_discounts
 
+  include AASM
+
+  aasm whiny_transitions: false, column: :status do
+    state :open, initial: true
+    state :checkout
+  end
+
   def products
     @products ||= self.cart_items.map(&:product)
   end

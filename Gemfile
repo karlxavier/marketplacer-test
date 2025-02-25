@@ -36,8 +36,10 @@ gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
-
+gem "devise", "~> 4.9"
+gem "devise_token_auth", "~> 1.2"
 gem "aasm"
+gem "omniauth"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -53,6 +55,7 @@ group :development, :test do
   gem "factory_bot_rails", require: false
   gem "faker"
   gem "shoulda-matchers"
+  gem "rspec-rails", "~> 7.1"
 end
 
 group :development do
@@ -65,5 +68,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "rspec-rails", "~> 7.1", groups: [ :development, :test ]
