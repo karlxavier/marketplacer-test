@@ -33,7 +33,7 @@ Database creation and migration:
 
 Run RSpec Tests:
 
-- `docker-compose run --rm app rspec`
+- `docker-compose run --rm -e RAILS_ENV=test app rspec`
 - RSpec will validate the following cases:
   - `spec/models/cart_spec.rb`
   - `spec/requests/api/carts_spec.rb`
