@@ -3,6 +3,7 @@ class DiscountRulesSeed
     {
       group_name: 'DEFAULT_PROMO',
       priority: 3,
+      message: 'Discount applied: 10% off on total greater than $20',
       rules: [
         {
           field: 'subtotal',
@@ -21,6 +22,7 @@ class DiscountRulesSeed
     {
       group_name: 'DEFAULT_PROMO',
       priority: 2,
+      message: 'Discount applied: 15% off on total greater than $50',
       rules: [
         {
           field: 'subtotal',
@@ -39,6 +41,7 @@ class DiscountRulesSeed
     {
       group_name: 'DEFAULT_PROMO',
       priority: 1,
+      message: 'Discount applied: 20% off on total greater than $100',
       rules: [
         {
           field: 'subtotal',
@@ -57,6 +60,7 @@ class DiscountRulesSeed
     {
       group_name: 'SUMMER_PROMO',
       priority: 1,
+      message: 'Discount applied: 50% off on total greater than $1000',
       rules: [
         {
           field: 'subtotal',
