@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_25_045518) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_25_133849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,13 +26,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_25_045518) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.decimal "subtotal", precision: 15, scale: 2
     t.decimal "discount_amount", precision: 15, scale: 2
     t.decimal "total_price", precision: 15, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
+    t.string "status"
   end
 
   create_table "discount_rules", force: :cascade do |t|
@@ -57,14 +57,30 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_25_045518) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "provider", default: "email", null: false
+    t.string "uid", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.boolean "allow_password_change", default: false
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.string "name"
+    t.string "nickname"
+    t.string "image"
     t.string "email"
-    t.string "password"
+    t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
   add_foreign_key "cart_items", "carts"
-  add_foreign_key "carts", "users"
   add_foreign_key "discount_transactions", "discount_rules"
 end

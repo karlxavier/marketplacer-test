@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: mp_test_1_development
+      POSTGRES_DB: mp_tech_1_development
 
   app:
     build: .
@@ -20,7 +20,7 @@ services:
       - "3000:3000"
     environment:
       RAILS_ENV: development
-      DATABASE_URL: postgres://postgres:password@db:5432/mp_test_1_development
+      DATABASE_URL: postgres://postgres:password@db:5432/mp_tech_1_development
     stdin_open: true
     tty: true
 

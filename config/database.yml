@@ -24,8 +24,8 @@ default: &default
 
 development:
   <<: *default
-  database: mp_test_1_development
+  database: mp_tech_1_development
 
 test:
   <<: *default
-  database: mp_test_1_test
+  database: mp_tech_1_development
